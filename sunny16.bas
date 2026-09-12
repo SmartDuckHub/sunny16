@@ -118,8 +118,8 @@ END SUB
 
 
 SUB PrintUitleg(titel AS STRING, uitleg AS STRING)
-	LOCATE 6, 28: PRINT "KIES DE ISO-WAARDE VAN JE FILM"
-    LOCATE 8, 23: PRINT "Pijltjes = kiezen, ENTER = bevestigen"
+	LOCATE 6, 28: PRINT titel
+    LOCATE 8, 23: PRINT uitleg
 END SUB
 
 SUB PrintResultaat(titel AS STRING, weerkeuze AS INTEGER, iso AS SINGLE)
