@@ -41,6 +41,7 @@ DIM k AS STRING
 SCREEN 12
 COLOR 15,1
 CLS
+
 DO
     TekenRaamwerk
 
@@ -322,14 +323,12 @@ END SUB
 ' ---------------------------------------------------------
 SUB TekenIcon (idx AS INTEGER, cx AS INTEGER, cy AS INTEGER, selected AS INTEGER)
     DIM boxcol AS INTEGER
-    IF selected THEN boxcol = 15 ELSE boxcol = 8
-
-    LINE (cx - 35, cy - 35)-(cx + 35, cy + 35), 0, BF
-    LINE (cx - 35, cy - 35)-(cx + 35, cy + 35), boxcol, B
+    IF selected THEN boxcol = 14 ELSE boxcol = 8
 
     SELECT CASE idx
 
         CASE 1 ' Zonnig: gele zon met stralen
+			LINE (cx - 35, cy - 35)-(cx + 35, cy + 35), 11, BF
             CIRCLE (cx, cy), 16, 14
             PAINT (cx, cy), 14, 14
             LINE (cx - 28, cy)-(cx - 20, cy), 14
@@ -342,6 +341,7 @@ SUB TekenIcon (idx AS INTEGER, cx AS INTEGER, cy AS INTEGER, selected AS INTEGER
             LINE (cx - 14, cy + 14)-(cx - 20, cy + 20), 14
 
         CASE 2 ' Licht bewolkt: zon deels achter wolk
+			LINE (cx - 35, cy - 35)-(cx + 35, cy + 35), 11, BF
             CIRCLE (cx - 6, cy - 6), 14, 14
             PAINT (cx - 6, cy - 6), 14, 14
             CIRCLE (cx + 8, cy + 6), 14, 7
@@ -350,6 +350,7 @@ SUB TekenIcon (idx AS INTEGER, cx AS INTEGER, cy AS INTEGER, selected AS INTEGER
             PAINT (cx + 18, cy + 16), 7, 7
 
         CASE 3 ' Bewolkt: grijze wolk
+			LINE (cx - 35, cy - 35)-(cx + 35, cy + 35), 11, BF
 			CIRCLE (cx + 14, cy + 8), 10, 7
             PAINT (cx + 14, cy + 8), 7, 7
             CIRCLE (cx - 10, cy + 4), 12, 7
@@ -357,25 +358,25 @@ SUB TekenIcon (idx AS INTEGER, cx AS INTEGER, cy AS INTEGER, selected AS INTEGER
             CIRCLE (cx + 6, cy - 2), 15, 7
             PAINT (cx + 6, cy - 2), 7, 7
            
-
         CASE 4 ' Zwaar bewolkt: donkergrijze wolk
+			LINE (cx - 35, cy - 35)-(cx + 35, cy + 35), 9, BF
             CIRCLE (cx + 14, cy + 8), 10, 8
             PAINT (cx + 14, cy + 8), 8, 8
             CIRCLE (cx - 10, cy + 4), 12, 8
             PAINT (cx - 10, cy + 4), 8, 8
             CIRCLE (cx + 6, cy - 2), 15, 8
-            PAINT (cx + 6, cy - 2), 8, 8
-           
+            PAINT (cx + 6, cy - 2), 8, 8     
 
         CASE 5 ' Schaduw / zonsondergang: halve zon achter horizon
+			LINE (cx - 35, cy - 35)-(cx + 35, cy + 35), 9, BF
             CIRCLE (cx, cy), 16, 12
             PAINT (cx, cy), 12, 12
             LINE (cx - 30, cy + 6)-(cx + 30, cy + 30), 2, BF
-            CIRCLE (cx, cy + 14), 16, 8
-            PAINT (cx, cy + 14), 12, 8
-            
 
     END SELECT
+    
+    LINE (cx - 34, cy - 34)-(cx + 36, cy + 36), boxcol, B
+    LINE (cx - 35, cy - 35)-(cx + 35, cy + 35), boxcol, B
 END SUB
 
 ' ---------------------------------------------------------
@@ -397,8 +398,9 @@ END SUB
 SUB TekenFilm (idx AS INTEGER, cx AS INTEGER, cy AS INTEGER, selected AS INTEGER)
     DIM boxcol AS INTEGER
     DIM labelcol AS INTEGER
-    IF selected THEN boxcol = 15 ELSE boxcol = 8
+    IF selected THEN boxcol = 14 ELSE boxcol = 8
     LINE (cx - 35, cy - 35)-(cx + 35, cy + 35), 0, BF
+    LINE (cx - 34, cy - 34)-(cx + 36, cy + 36), boxcol, B
     LINE (cx - 35, cy - 35)-(cx + 35, cy + 35), boxcol, B
     SELECT CASE idx
         CASE 1: labelcol = 9    ' ISO 100  - blauw etiket
